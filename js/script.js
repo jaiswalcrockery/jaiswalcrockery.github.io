@@ -1,3 +1,22 @@
+// Hamburger menu toggle
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector("nav ul");
+
+  hamburger.addEventListener("click", function () {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("open");
+  });
+
+  // Optional: Close menu when a link is clicked (for single-page navigation)
+  navMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navMenu.classList.remove("open");
+    });
+  });
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   // Smooth scrolling for navigation links
   document.querySelectorAll('nav a[href^="#"]').forEach((anchor) => {

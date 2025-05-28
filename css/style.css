@@ -22,6 +22,78 @@ body {
   background-color: var(--primary-bg);
 }
 
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger span {
+  display: block;
+  height: 4px;
+  width: 28px;
+  margin: 5px auto;
+  background: var(--accent-color);
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+/* Hamburger open/close animation */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Responsive Nav */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 5%;
+    background: var(--primary-bg);
+    width: 200px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+    border-radius: 8px;
+    padding: 1rem 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 1000;
+  }
+  nav ul.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  nav ul li {
+    margin: 0;
+    padding: 0.7rem 1.5rem;
+    text-align: left;
+  }
+  nav ul li a {
+    display: block;
+    width: 100%;
+  }
+}
+
 /* Navigation */
 header {
   background-color: var(--primary-bg);
@@ -104,6 +176,12 @@ nav ul li a:hover {
   border-radius: 5px;
   font-weight: 700;
   transition: background-color 0.3s ease;
+}
+
+#more {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
 }
 
 .cta-button:hover {
@@ -406,9 +484,6 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  nav ul {
-    display: none; /* Simple hiding for demo, can be replaced with a hamburger menu */
-  }
   .hero {
     flex-direction: column;
     text-align: center;
